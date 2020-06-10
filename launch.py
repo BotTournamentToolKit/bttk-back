@@ -2,6 +2,7 @@ from sanic import Sanic
 from sanic.response import json
 from sanic.request import Request
 from config import WEB_SERVER_PORT
+
 app = Sanic(name="BTTK")
 
 
