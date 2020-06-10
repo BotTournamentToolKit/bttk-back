@@ -18,9 +18,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run Tests
         run: pytest --cov=./ .
-      - uses: codecov/codecov-action@v1
-        with:
-          fail_ci_if_error: true
+      - name: CodeCov
+        run: codecov -t ${{ secrets.CODECOV_TOKEN }}
 
   test-windows-x64:
     runs-on: windows-latest
