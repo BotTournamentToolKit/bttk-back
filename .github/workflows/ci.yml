@@ -1,0 +1,50 @@
+name: CI
+on:
+  - push
+  - pull_request
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+      - name: install deps
+        run: pip install -r requirements.txt
+      - name: Run Tests
+        run: pytest --cov=./ .
+
+  test-windows-x64:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+      - name: install deps
+        run: pip install -r requirements.txt
+      - name: Run Tests
+        run: pytest --cov=./ .
+
+  test-windows-x86:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          architecture: 'x86'
+      - name: install deps
+        run: pip install -r requirements.txt
+      - name: Run Tests
+        run: pytest --cov=./ .
