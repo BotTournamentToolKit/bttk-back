@@ -3,3 +3,5 @@ black
 pytest
 pytest-cov
 codecov
+aiofiles
+pytest-asyncio
