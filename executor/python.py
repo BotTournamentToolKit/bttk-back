@@ -24,6 +24,7 @@ class PythonFileExecutor(Executor):
         try:
             await asyncio.wait_for(proc.communicate(), timeout=5.0)
         except:
+            proc.kill()
             raise TimeoutError()
 
         if proc.returncode != 0:
