@@ -16,10 +16,24 @@ def event_loop():
     else:
         loop = asyncio.get_event_loop()
     yield loop
-    loop.close()
+    # loop.close()
 
 
 @pytest.mark.asyncio
 async def test_execute():
-    this_executor = PythonFileExecutor("./bots_for_testing/testing_bot.py")
+    this_executor = PythonFileExecutor("bots_for_testing/testing_bot.py")
     assert await this_executor.turn("1") == "2"
+
+
+@pytest.mark.asyncio
+async def test_timeout():
+    this_executor = PythonFileExecutor("bots_for_testing/testing_recur.py")
+    with pytest.raises(TimeoutError):
+        await this_executor.turn("1")
+
+
+@pytest.mark.asyncio
+async def test_fail():
+    this_executor = PythonFileExecutor("bots_for_testing/testing_fail.py")
+    with pytest.raises(RuntimeError):
+        await this_executor.turn("1")

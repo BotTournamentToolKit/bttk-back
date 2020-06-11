@@ -21,10 +21,13 @@ class PythonFileExecutor(Executor):
             f"python {file_path}", cwd=parent_path
         )
 
-        await asyncio.wait_for(proc.communicate(), timeout=5.0)
+        try:
+            await asyncio.wait_for(proc.communicate(), timeout=5.0)
+        except:
+            raise TimeoutError()
 
         if proc.returncode != 0:
-            raise NotImplementedError()
+            raise RuntimeError()
 
         # Read a turn from a file
         async with aiofiles.open(f"{parent_path}/turn.txt", mode="r") as f:
