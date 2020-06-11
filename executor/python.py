@@ -13,11 +13,7 @@ class PythonFileExecutor(Executor):
             await f.write(field)
 
         # Run a program with time out
-        proc = await asyncio.create_subprocess_shell(
-            f"python {self.file_path}",
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.PIPE,
-        )
+        proc = await asyncio.create_subprocess_shell(f"python {self.file_path}")
 
         stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=5.0)
 
