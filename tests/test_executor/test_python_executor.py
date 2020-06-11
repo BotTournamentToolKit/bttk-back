@@ -21,5 +21,5 @@ def event_loop():
 
 @pytest.mark.asyncio
 async def test_execute():
-    this_executor = PythonFileExecutor("testing_bot.py")
+    this_executor = PythonFileExecutor("./bots_for_testing/testing_bot.py")
     assert await this_executor.turn("1") == "2"
