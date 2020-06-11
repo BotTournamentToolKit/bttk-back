@@ -11,7 +11,6 @@ def test_create():
 
 @pytest.mark.asyncio
 async def test_execute():
-    if platform.system() == "Windows":
-        asyncio.set_event_loop(asyncio.ProactorEventLoop())
+    print(platform.system())
     this_executor = PythonFileExecutor("testing_bot.py")
     assert await this_executor.turn("1") == "2"
