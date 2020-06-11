@@ -1,0 +1,6 @@
+[run]
+omit =
+    tests/*
+    bots_for_testing/*
+    config.py
+    launch.py
