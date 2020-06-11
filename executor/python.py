@@ -9,8 +9,6 @@ class PythonFileExecutor(Executor):
         super(PythonFileExecutor, self).__init__(path)
 
     async def turn(self, field: str) -> str:
-        if platform.system() == "Windows":
-            asyncio.set_event_loop(asyncio.ProactorEventLoop())
 
         # Write a field into a file.
         async with aiofiles.open("field.txt", mode="w") as f:

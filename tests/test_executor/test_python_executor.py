@@ -9,8 +9,17 @@ def test_create():
     assert this_executor.file_path == "test.py"
 
 
+@pytest.fixture
+def event_loop():
+    if platform.system() == "Windows":
+        loop = asyncio.ProactorEventLoop()
+    else:
+        loop = asyncio.get_event_loop()
+    yield loop
+    loop.close()
+
+
 @pytest.mark.asyncio
 async def test_execute():
-    print(platform.system())
     this_executor = PythonFileExecutor("testing_bot.py")
     assert await this_executor.turn("1") == "2"
