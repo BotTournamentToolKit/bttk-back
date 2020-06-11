@@ -21,7 +21,7 @@ class PythonFileExecutor(Executor):
             f"python {file_path}", cwd=parent_path
         )
 
-        stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=5.0)
+        await asyncio.wait_for(proc.communicate(), timeout=5.0)
 
         if proc.returncode != 0:
             raise NotImplementedError()
