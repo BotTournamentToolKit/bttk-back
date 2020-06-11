@@ -27,7 +27,7 @@ async def test_execute():
 
 @pytest.mark.asyncio
 async def test_timeout():
-    this_executor = PythonFileExecutor("bots_for_testing/testing_recur.py")
+    this_executor = PythonFileExecutor("bots_for_testing/testing_recur.py", timeout=1.0)
     with pytest.raises(TimeoutError):
         await this_executor.turn("1")
 

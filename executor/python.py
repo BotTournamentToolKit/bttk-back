@@ -5,8 +5,8 @@ from pathlib import Path
 
 
 class PythonFileExecutor(Executor):
-    def __init__(self, path: str):
-        super(PythonFileExecutor, self).__init__(path)
+    def __init__(self, path: str, timeout: float = 5.0):
+        super(PythonFileExecutor, self).__init__(path, timeout)
 
     async def turn(self, field: str) -> str:
         parent_path = Path(self.file_path).parent
@@ -22,7 +22,7 @@ class PythonFileExecutor(Executor):
         )
 
         try:
-            await asyncio.wait_for(proc.communicate(), timeout=5.0)
+            await asyncio.wait_for(proc.communicate(), timeout=self.timeout)
         except:
             proc.kill()
             raise TimeoutError()
