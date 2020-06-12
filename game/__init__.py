@@ -27,7 +27,8 @@ class Game(object):
     async def turn(self):
         raise NotImplementedError()
 
-    async def repr_json(self):
+    @property
+    def repr_json(self):
         return {
             "game": self.game_name_json,
             "state": self.state,
