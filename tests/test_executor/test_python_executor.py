@@ -6,7 +6,7 @@ import asyncio
 
 def test_create():
     this_executor = PythonFileExecutor("test.py")
-    assert this_executor.file_path == "test.py"
+    assert this_executor.file_name == "test.py"
 
 
 @pytest.fixture
