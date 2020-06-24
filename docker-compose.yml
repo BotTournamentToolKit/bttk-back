@@ -19,8 +19,6 @@ services:
 
   webserver:
     build: .
-    volumes:
-       - ./config.py:/usr/src/app/config.py
     ports:
       - 8000:8000
     env_file:
