@@ -15,11 +15,9 @@ class MatchesGame(Game):
         # make turn
         try:
             turn = await self.bots[self.current_bot].turn(self.matches_count)
-        except:
+        except (TimeoutError, RuntimeError, ValueError):
             self.state = DISQUALIFIED
             return
-
-        turn = int(turn)
 
         # check for validity of turn
         if turn >= 1 & turn <= 3 & self.matches_count >= turn:

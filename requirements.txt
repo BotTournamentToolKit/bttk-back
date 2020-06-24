@@ -5,3 +5,5 @@ pytest-cov
 codecov
 aiofiles
 pytest-asyncio
+flake8
+flake8-black
