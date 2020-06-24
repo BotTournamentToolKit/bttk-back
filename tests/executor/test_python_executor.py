@@ -1,22 +1,10 @@
 from executor.python import PythonFileExecutor
 import pytest
-import platform
-import asyncio
 
 
 def test_create():
     this_executor = PythonFileExecutor("test.py")
     assert this_executor.file_name == "test.py"
-
-
-@pytest.fixture
-def event_loop():
-    if platform.system() == "Windows":
-        loop = asyncio.ProactorEventLoop()
-    else:
-        loop = asyncio.get_event_loop()
-    yield loop
-    # loop.close()
 
 
 @pytest.mark.asyncio

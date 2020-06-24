@@ -36,7 +36,7 @@ class MatchesGame(Game):
             return
 
         # else change player
-        self.current_bot = (self.current_bot + 1) % 2
+        self.current_bot = (self.current_bot + 1) % len(self.bots)
         return
 
     @property
