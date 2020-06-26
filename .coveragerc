@@ -1,7 +1,4 @@
 [run]
 omit =
-    tests/*
-    bots_for_testing/*
-    bots_for_testing/testing_recur.py
     config.py
     launch.py
