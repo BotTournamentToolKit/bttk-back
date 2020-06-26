@@ -1,6 +1,7 @@
 from executor import Executor
 import aiofiles
 import asyncio
+import sys
 
 
 class PythonFileExecutor(Executor):
@@ -12,7 +13,7 @@ class PythonFileExecutor(Executor):
 
         # Run a program with time out
         proc = await asyncio.create_subprocess_shell(
-            f"python3 {self.file_name}", cwd=self.parent_path
+            f"{sys.executable} {self.file_name}", cwd=self.parent_path
         )
 
         try:
