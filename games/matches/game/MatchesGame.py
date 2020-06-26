@@ -1,15 +1,12 @@
-from typing import List
-
 from game import Game, DISQUALIFIED, BOT_WON
-from games.matches.bot.MatchesBot import MatchesBot
 
 
 class MatchesGame(Game):
     matches_count: int
 
-    def __init__(self, bots: List[MatchesBot]):
-        super().__init__(bots)
-        # check for count of bots  -----------???--------
+    async def play(self, matches_count_start: int):
+        self.matches_count = matches_count_start
+        super().__init__()
 
     async def turn(self):
         # make turn
