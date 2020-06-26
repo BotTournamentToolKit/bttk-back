@@ -18,7 +18,7 @@ class PythonFileExecutor(Executor):
 
         try:
             await asyncio.wait_for(proc.communicate(), timeout=self.timeout)
-        except asyncio.futures.TimeoutError:
+        except asyncio.TimeoutError:
             proc.kill()
             raise TimeoutError()
 
