@@ -12,7 +12,7 @@ class PythonFileExecutor(Executor):
 
         # Run a program with time out
         proc = await asyncio.create_subprocess_shell(
-            f"python {self.file_name}", cwd=self.parent_path
+            f"python3 {self.file_name}", cwd=self.parent_path
         )
 
         try:
