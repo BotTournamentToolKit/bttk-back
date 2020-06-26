@@ -1,6 +1,5 @@
 from executor.python import PythonFileExecutor
 import pytest
-from tests import event_loop
 
 
 def test_create():
