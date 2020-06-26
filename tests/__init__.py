@@ -10,4 +10,4 @@ def event_loop():
     else:
         loop = asyncio.get_event_loop()
     yield loop
-    # loop.close()
+    loop.close()
